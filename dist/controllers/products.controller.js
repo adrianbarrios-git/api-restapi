@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateProductById = exports.getTotalProducts = exports.getProducts = exports.getProductById = exports.deleteProductById = exports.createNewProduct = void 0;
+exports.updateProductById = exports.getTotalProducts = exports.getProducts = exports.getProductById = exports.getInventarioProductos = exports.getCatProductos = exports.deleteProductById = exports.createNewProduct = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -31,7 +31,8 @@ var getProducts = /*#__PURE__*/function () {
 
           case 6:
             result = _context.sent;
-            res.json(result.recordset);
+            res.json(result.recordset); //res.send(JSON.parse(JSON.stringify({result.recordset })));
+
             _context.next = 14;
             break;
 
@@ -135,7 +136,7 @@ var getProductById = /*#__PURE__*/function () {
 
           case 6:
             result = _context3.sent;
-            return _context3.abrupt("return", res.json(result.recordset[0]));
+            return _context3.abrupt("return", res.json(result.recordset));
 
           case 10:
             _context3.prev = 10;
@@ -301,3 +302,91 @@ var updateProductById = /*#__PURE__*/function () {
 }();
 
 exports.updateProductById = updateProductById;
+
+var getInventarioProductos = /*#__PURE__*/function () {
+  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res) {
+    var pool, result;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            _context7.next = 3;
+            return (0, _database.getConnection)();
+
+          case 3:
+            pool = _context7.sent;
+            _context7.next = 6;
+            return pool.request().query(_database.querys.getAllInventoryProducts);
+
+          case 6:
+            result = _context7.sent;
+            res.json(result.recordset); //res.send(JSON.parse(JSON.stringify({result.recordset })));
+
+            _context7.next = 14;
+            break;
+
+          case 10:
+            _context7.prev = 10;
+            _context7.t0 = _context7["catch"](0);
+            res.status(500);
+            res.send(_context7.t0.message);
+
+          case 14:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 10]]);
+  }));
+
+  return function getInventarioProductos(_x13, _x14) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
+exports.getInventarioProductos = getInventarioProductos;
+
+var getCatProductos = /*#__PURE__*/function () {
+  var _ref8 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(req, res) {
+    var pool, result;
+    return _regenerator["default"].wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.prev = 0;
+            _context8.next = 3;
+            return (0, _database.getConnection)();
+
+          case 3:
+            pool = _context8.sent;
+            _context8.next = 6;
+            return pool.request().query(_database.querys.getAllCatProducts);
+
+          case 6:
+            result = _context8.sent;
+            res.json(result.recordset); //res.send(JSON.parse(JSON.stringify({result.recordset })));
+
+            _context8.next = 14;
+            break;
+
+          case 10:
+            _context8.prev = 10;
+            _context8.t0 = _context8["catch"](0);
+            res.status(500);
+            res.send(_context8.t0.message);
+
+          case 14:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8, null, [[0, 10]]);
+  }));
+
+  return function getCatProductos(_x15, _x16) {
+    return _ref8.apply(this, arguments);
+  };
+}();
+
+exports.getCatProductos = getCatProductos;

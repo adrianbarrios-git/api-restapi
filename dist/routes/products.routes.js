@@ -16,5 +16,7 @@ router.get("/products/count", _products.getTotalProducts);
 router.get("/products/:id", _products.getProductById);
 router["delete"]("/products/:id", _products.deleteProductById);
 router.put("/products/:id", _products.updateProductById);
+router.get("/InventoryProducts", _products.getInventarioProductos);
+router.get("/CatProducts", _products.getCatProductos);
 var _default = router;
 exports["default"] = _default;

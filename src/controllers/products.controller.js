@@ -5,6 +5,7 @@ export const getProducts = async(req, res) => {
         const pool = await getConnection();
         const result = await pool.request().query(querys.getAllProducts);
         res.json(result.recordset);
+        //res.send(JSON.parse(JSON.stringify({result.recordset })));
     } catch (error) {
         res.status(500);
         res.send(error.message);
@@ -47,7 +48,7 @@ export const getProductById = async(req, res) => {
             .request()
             .input("id", req.params.id)
             .query(querys.getProducById);
-        return res.json(result.recordset[0]);
+        return res.json(result.recordset);
     } catch (error) {
         res.status(500);
         res.send(error.message);
@@ -98,6 +99,30 @@ export const updateProductById = async(req, res) => {
             .input("id", req.params.id)
             .query(querys.updateProductById);
         res.json({ name, description, quantity });
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
+
+export const getInventarioProductos = async(req, res) => {
+    try {
+        const pool = await getConnection();
+        const result = await pool.request().query(querys.getAllInventoryProducts);
+        res.json(result.recordset);
+        //res.send(JSON.parse(JSON.stringify({result.recordset })));
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
+
+export const getCatProductos = async(req, res) => {
+    try {
+        const pool = await getConnection();
+        const result = await pool.request().query(querys.getAllCatProducts);
+        res.json(result.recordset);
+        //res.send(JSON.parse(JSON.stringify({result.recordset })));
     } catch (error) {
         res.status(500);
         res.send(error.message);

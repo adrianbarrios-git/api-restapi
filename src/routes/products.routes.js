@@ -6,6 +6,8 @@ import {
     deleteProductById,
     getTotalProducts,
     updateProductById,
+    getInventarioProductos,
+    getCatProductos,
 } from "../controllers/products.controller";
 
 const router = Router();
@@ -21,5 +23,9 @@ router.get("/products/:id", getProductById);
 router.delete("/products/:id", deleteProductById);
 
 router.put("/products/:id", updateProductById);
+
+router.get("/InventoryProducts", getInventarioProductos);
+
+router.get("/CatProducts", getCatProductos);
 
 export default router;

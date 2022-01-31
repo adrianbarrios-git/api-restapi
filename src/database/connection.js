@@ -6,12 +6,13 @@ export const dbSettings = {
     password: config.dbPassword,
     server: config.dbServer,
     database: config.dbDatabase,
+    port: config.dbPort,
     synchronize: true,
     options: {
         cryptoCredentialsDetails: {
             minVersion: 'TLSv1'
         },
-        encrypt: true, // for azure
+        encrypt: false, // for azure
         trustServerCertificate: true, // change to true for local dev / self-signed certs
     }
 };

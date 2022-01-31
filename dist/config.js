@@ -13,6 +13,7 @@ var _default = {
   dbUser: process.env.DB_USER || "",
   dbPassword: process.env.DB_PASSWORD || "",
   dbServer: process.env.DB_SERVER || "",
-  dbDatabase: process.env.DB_DATABASE || ""
+  dbDatabase: process.env.DB_DATABASE || "",
+  dbPort: parseInt(process.env.DB_PORT) || 1433
 };
 exports["default"] = _default;

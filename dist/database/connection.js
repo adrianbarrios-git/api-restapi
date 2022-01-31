@@ -26,12 +26,13 @@ var dbSettings = {
   password: _config["default"].dbPassword,
   server: _config["default"].dbServer,
   database: _config["default"].dbDatabase,
+  port: _config["default"].dbPort,
   synchronize: true,
   options: {
     cryptoCredentialsDetails: {
       minVersion: 'TLSv1'
     },
-    encrypt: true,
+    encrypt: false,
     // for azure
     trustServerCertificate: true // change to true for local dev / self-signed certs
 
